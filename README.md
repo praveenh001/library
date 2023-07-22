@@ -1,66 +1,26 @@
-#library system
-books = []
-def entry(): #to input the data of books
-    code = int(input("Enter the book code: "))
-    author = input("Enter the author name: ")
-    book = input("Enter the book name: ")
-    quantity = int(input("Enter the number of copies: "))
-    book_data = [code, author, book, quantity]
-    return book_data
+This Python code represents a simple library system that allows users to perform various operations related to managing books in a library. The library system maintains a list of books, and users can add books, delete books, issue books to students, receive books back from students, and display the current list of books.
 
-def add(): #to add books
-    book_data = entry()
-    books.append(book_data)
-    print("Book added successfully.")
+Here's a step-by-step description of the code:
 
-def delete(): #to delete books
-    code_to_delete = int(input("Enter the book code to delete: "))
-    for book_data in books:
-        if book_data[0] == code_to_delete:
-            books.remove(book_data)
-            print("Book removed successfully.")
-            return
-    print("Invalid book code. Book not found.")
+1. The `books` list is declared to store the information of books. Each book's information is represented as a list containing the book code, author name, book name, and the number of copies available.
 
-def issue(): #to issue books to students 
-    code_to_issue = int(input("Enter the book code to issue: "))
-    for book_data in books:
-        if book_data[0] == code_to_issue:
-            if book_data[3] > 0:
-                book_data[3] -= 1
-                print("Book issued successfully.")
-                return
-            else:
-                print("No copies of the book available for issue.")
-                return
-    print("Invalid book code. Book not found.")
+2. The `entry()` function is defined to take user input and create a list with the book data (code, author name, book name, and quantity). It returns this list for further use.
 
-def reci(): #to recive book back from students
-    code_to_receive = int(input("Enter the book code to receive: "))
-    for book_data in books:
-        if book_data[0] == code_to_receive:
-            book_data[3] += 1
-            print("Book received successfully.")
-            return
-    print("Invalid book code. Book not found.")
+3. The `add()` function is defined to add new books to the `books` list. It calls the `entry()` function to get the book data from the user, appends it to the `books` list, and prints a success message.
 
-for i in range(100):#for repeating the program
-    print("\n\nWELCOME TO LIBRARY\n") # body of the program
-    print("1. Add books")
-    print("2. Delete books")
-    print("3. Issue books")
-    print("4. Receive books")
-    print("5. Display books")
-    op = int(input("Choose the option: "))
-    if op == 1:
-        add()
-    elif op == 2:
-        delete()
-    elif op == 3:
-        issue()
-    elif op == 4:
-        reci()
-    elif op == 5:
-        print(books)
-    else:
-        print("Invalid entry")
+4. The `delete()` function allows the user to remove a book from the library system based on the book code provided. It takes the book code as input and iterates through the `books` list to find the book with the matching code. If found, it removes the book from the list and displays a success message; otherwise, it prints an error message.
+
+5. The `issue()` function lets the user issue a book to a student. It takes the book code as input and checks if the book is available (quantity > 0). If available, it decrements the quantity by one and prints a success message. If not available, it prints an error message.
+
+6. The `reci()` function allows the user to receive a book back from a student. It takes the book code as input and finds the corresponding book in the `books` list. It then increments the quantity by one to mark the book as received and prints a success message.
+
+7. The main part of the code runs a loop for 100 iterations, repeatedly displaying a menu of options to the user. The available options are:
+   - 1: Add books
+   - 2: Delete books
+   - 3: Issue books
+   - 4: Receive books
+   - 5: Display books
+
+8. Based on the user's choice, the program calls the respective functions (`add()`, `delete()`, `issue()`, `reci()`, or displays the `books` list) to perform the corresponding operation.
+
+It's important to note that this code provides a simple and basic implementation of a library system. In a real-world scenario, you would need to consider additional functionalities like data persistence (e.g., using a database), error handling, user authentication, and more robust book management features.
